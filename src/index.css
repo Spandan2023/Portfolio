@@ -2,36 +2,119 @@
 
 @import "tailwindcss";
 
+/* =========================================================
+   MANUAL DARK MODE — TAILWIND V4
+   ========================================================= */
+
+@custom-variant dark (&:where(html.dark, html.dark *));
+
+/* =========================================================
+   PORTFOLIO DESIGN TOKENS
+   ========================================================= */
+
+@theme {
+  --color-matte-charcoal: #18181a;
+  --color-matte-surface: #1e1e20;
+
+  --color-regal-crimson: #8c2131;
+  --color-champagne-gold: #c1a673;
+
+  --color-ash-white: #e4e4e7;
+  --color-ash-muted: #a1a1aa;
+}
+
+/* =========================================================
+   BASE
+   ========================================================= */
+
 :root {
   font-family: "Inter", sans-serif;
-  color: #f8fafc;
-  background: #0b0f19;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  color-scheme: light;
 }
 
 html {
   scroll-behavior: smooth;
-  background: #0b0f19;
+  background: #fafafa;
+}
+
+html.dark {
+  background: #18181a;
+  color-scheme: dark;
 }
 
 body {
   margin: 0;
   min-width: 320px;
-  background: #0b0f19;
-  color: #f8fafc;
   overflow-x: hidden;
+
+  background: #fafafa;
+  color: #27272a;
+
+  transition:
+    background-color 500ms ease,
+    color 500ms ease;
+}
+
+html.dark body {
+  background: #18181a;
+  color: #e4e4e7;
 }
 
 * {
   box-sizing: border-box;
 }
 
+/* =========================================================
+   SELECTION
+   ========================================================= */
+
 ::selection {
-  background: #06b6d4;
-  color: #0b0f19;
+  background: #8c2131;
+  color: #ffffff;
 }
+
+/* =========================================================
+   FONTS
+   ========================================================= */
 
 .font-space {
   font-family: "Space Grotesk", sans-serif;
+}
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fafafa;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d4d4d8;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8c2131;
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: #18181a;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: #3f3f46;
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #8c2131;
 }

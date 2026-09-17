@@ -1,8 +1,10 @@
 import { motion } from "framer-motion";
+
 import {
   FiArrowRight,
   FiLayers,
 } from "react-icons/fi";
+
 import { FaGithub } from "react-icons/fa";
 
 import { projects } from "../data/projects";
@@ -17,10 +19,14 @@ function Projects() {
       className="
         relative
         overflow-hidden
-        bg-[#18181A]
+        bg-zinc-50
         px-6
         py-28
-        text-[#E4E4E7]
+        text-zinc-800
+        transition-colors
+        duration-500
+        dark:bg-matte-charcoal
+        dark:text-ash-white
         sm:px-8
         lg:px-10
         lg:py-32
@@ -30,26 +36,98 @@ function Projects() {
           BACKGROUND ARCHITECTURE
       ====================================================== */}
 
+      {/* Light grid */}
+
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.014]"
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          opacity-70
+          dark:hidden
+        "
         style={{
           backgroundImage: `
-            linear-gradient(rgba(255,255,255,0.8) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,0.8) 1px, transparent 1px)
+            linear-gradient(
+              rgba(39,39,42,0.045) 1px,
+              transparent 1px
+            ),
+            linear-gradient(
+              90deg,
+              rgba(39,39,42,0.045) 1px,
+              transparent 1px
+            )
           `,
           backgroundSize: "72px 72px",
         }}
       />
 
-      <div className="pointer-events-none absolute left-[7%] top-0 h-full w-px bg-white/[0.025]" />
+      {/* Dark grid */}
 
-      <div className="pointer-events-none absolute right-[7%] top-0 h-full w-px bg-white/[0.025]" />
+      <div
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          hidden
+          opacity-70
+          dark:block
+        "
+        style={{
+          backgroundImage: `
+            linear-gradient(
+              rgba(255,255,255,0.018) 1px,
+              transparent 1px
+            ),
+            linear-gradient(
+              90deg,
+              rgba(255,255,255,0.018) 1px,
+              transparent 1px
+            )
+          `,
+          backgroundSize: "72px 72px",
+        }}
+      />
 
-      {/* Restrained atmosphere */}
+      {/* Architectural vertical lines */}
 
-      <div className="pointer-events-none absolute left-[-12%] top-[18%] h-[450px] w-[450px] rounded-full bg-[#8C2131]/[0.025] blur-[150px]" />
+      <div className="pointer-events-none absolute left-[7%] top-0 h-full w-px bg-zinc-900/[0.035] dark:bg-white/[0.025]" />
 
-      <div className="pointer-events-none absolute bottom-[5%] right-[-10%] h-[500px] w-[500px] rounded-full bg-[#C1A673]/[0.018] blur-[170px]" />
+      <div className="pointer-events-none absolute right-[7%] top-0 h-full w-px bg-zinc-900/[0.035] dark:bg-white/[0.025]" />
+
+      {/* =====================================================
+          RESTRAINED ATMOSPHERE
+      ====================================================== */}
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          left-[-12%]
+          top-[18%]
+          h-[450px]
+          w-[450px]
+          rounded-full
+          bg-regal-crimson/[0.025]
+          blur-[150px]
+          dark:bg-regal-crimson/[0.06]
+        "
+      />
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          bottom-[5%]
+          right-[-10%]
+          h-[500px]
+          w-[500px]
+          rounded-full
+          bg-champagne-gold/[0.025]
+          blur-[170px]
+          dark:bg-champagne-gold/[0.035]
+        "
+      />
 
       {/* =====================================================
           MAIN CONTAINER
@@ -90,15 +168,23 @@ function Projects() {
 
           <div>
             <div className="mb-6 flex items-center gap-4">
-              <span className="h-px w-10 bg-[#8C2131]" />
+              <span className="h-px w-10 bg-regal-crimson" />
 
               <div className="flex items-center gap-2">
                 <FiLayers
                   size={13}
-                  className="text-[#C1A673]"
+                  className="text-champagne-gold"
                 />
 
-                <span className="text-[9px] font-semibold uppercase tracking-[0.3em] text-[#C1A673]">
+                <span
+                  className="
+                    text-[9px]
+                    font-semibold
+                    uppercase
+                    tracking-[0.3em]
+                    text-champagne-gold
+                  "
+                >
                   Selected Work
                 </span>
               </div>
@@ -112,13 +198,16 @@ function Projects() {
                 font-semibold
                 leading-[1.05]
                 tracking-[-0.045em]
-                text-[#E4E4E7]
+                text-zinc-800
+                transition-colors
+                duration-500
+                dark:text-ash-white
                 sm:text-5xl
                 md:text-6xl
               "
             >
               Things I've built from{" "}
-              <span className="text-[#8C2131]">
+              <span className="text-regal-crimson">
                 idea
               </span>{" "}
               to reality.
@@ -129,14 +218,32 @@ function Projects() {
 
           <div className="lg:pb-1">
             <div className="mb-4 flex items-center gap-3">
-              <span className="font-mono text-[9px] text-[#3F3F46]">
+              <span
+                className="
+                  font-mono
+                  text-[9px]
+                  text-zinc-400
+                  dark:text-zinc-600
+                "
+              >
                 02
               </span>
 
-              <span className="h-px w-8 bg-white/[0.08]" />
+              <span className="h-px w-8 bg-zinc-900/[0.08] dark:bg-white/[0.07]" />
             </div>
 
-            <p className="max-w-md text-sm leading-7 text-[#71717A] md:text-[15px]">
+            <p
+              className="
+                max-w-md
+                text-sm
+                leading-7
+                text-zinc-500
+                transition-colors
+                duration-500
+                dark:text-zinc-500
+                md:text-[15px]
+              "
+            >
               A selection of applications built to solve
               practical problems, explore ideas, and create
               useful digital experiences.
@@ -166,17 +273,40 @@ function Projects() {
           {/* Grid label */}
 
           <div className="mb-6 flex items-center gap-4">
-            <span className="font-mono text-[9px] text-[#3F3F46]">
+            <span
+              className="
+                font-mono
+                text-[9px]
+                text-zinc-400
+                dark:text-zinc-600
+              "
+            >
               01
             </span>
 
-            <span className="text-[9px] font-semibold uppercase tracking-[0.28em] text-[#52525B]">
+            <span
+              className="
+                text-[9px]
+                font-semibold
+                uppercase
+                tracking-[0.28em]
+                text-zinc-400
+                dark:text-zinc-600
+              "
+            >
               Projects
             </span>
 
-            <div className="h-px flex-1 bg-white/[0.07]" />
+            <div className="h-px flex-1 bg-zinc-900/[0.08] dark:bg-white/[0.07]" />
 
-            <span className="font-mono text-[9px] text-[#3F3F46]">
+            <span
+              className="
+                font-mono
+                text-[9px]
+                text-zinc-400
+                dark:text-zinc-600
+              "
+            >
               {String(projects.length).padStart(2, "0")}
             </span>
           </div>
@@ -222,29 +352,38 @@ function Projects() {
             href={GITHUB_URL}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Explore Spandan's GitHub profile"
             className="
               group
               inline-flex
               items-center
               gap-4
               border
-              border-[#C1A673]/30
-              bg-[#242427]
+              border-champagne-gold/30
+              bg-white
               px-6
               py-4
               text-sm
               font-semibold
-              text-[#E4E4E7]
+              text-zinc-800
               transition-all
               duration-300
               hover:-translate-y-1
-              hover:border-[#C1A673]/60
-              hover:bg-[#C1A673]/[0.04]
+              hover:border-champagne-gold
+              hover:bg-champagne-gold/[0.06]
+              dark:bg-matte-surface
+              dark:text-ash-white
+              dark:hover:bg-champagne-gold/[0.05]
             "
           >
             <FaGithub
               size={17}
-              className="text-[#C1A673] transition-transform duration-300 group-hover:scale-110"
+              className="
+                text-champagne-gold
+                transition-transform
+                duration-300
+                group-hover:scale-110
+              "
             />
 
             <span>
@@ -254,7 +393,7 @@ function Projects() {
             <FiArrowRight
               size={17}
               className="
-                text-[#C1A673]
+                text-champagne-gold
                 transition-transform
                 duration-300
                 group-hover:translate-x-1
@@ -267,12 +406,43 @@ function Projects() {
             CLOSING META
         ================================================== */}
 
-        <div className="mt-14 flex flex-col gap-3 border-t border-white/[0.06] pt-5 sm:flex-row sm:items-center sm:justify-between">
-          <span className="text-[9px] uppercase tracking-[0.22em] text-[#3F3F46]">
+        <div
+          className="
+            mt-14
+            flex
+            flex-col
+            gap-3
+            border-t
+            border-zinc-900/[0.08]
+            pt-5
+            transition-colors
+            duration-500
+            dark:border-white/[0.07]
+            sm:flex-row
+            sm:items-center
+            sm:justify-between
+          "
+        >
+          <span
+            className="
+              text-[9px]
+              uppercase
+              tracking-[0.22em]
+              text-zinc-400
+              dark:text-zinc-600
+            "
+          >
             From concept to deployment
           </span>
 
-          <span className="font-mono text-[9px] text-[#3F3F46]">
+          <span
+            className="
+              font-mono
+              text-[9px]
+              text-zinc-400
+              dark:text-zinc-600
+            "
+          >
             PROJECTS / 2026
           </span>
         </div>

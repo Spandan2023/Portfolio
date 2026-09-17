@@ -67,10 +67,14 @@ function Skills() {
       className="
         relative
         overflow-hidden
-        bg-[#18181A]
+        bg-zinc-50
         px-6
         py-28
-        text-[#E4E4E7]
+        text-zinc-800
+        transition-colors
+        duration-500
+        dark:bg-matte-charcoal
+        dark:text-ash-white
         sm:px-8
         lg:px-10
         lg:py-32
@@ -80,12 +84,54 @@ function Skills() {
           BACKGROUND ARCHITECTURE
       ====================================================== */}
 
+      {/* Light grid */}
+
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.014]"
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          opacity-70
+          dark:hidden
+        "
         style={{
           backgroundImage: `
-            linear-gradient(rgba(255,255,255,0.8) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,0.8) 1px, transparent 1px)
+            linear-gradient(
+              rgba(39,39,42,0.045) 1px,
+              transparent 1px
+            ),
+            linear-gradient(
+              90deg,
+              rgba(39,39,42,0.045) 1px,
+              transparent 1px
+            )
+          `,
+          backgroundSize: "72px 72px",
+        }}
+      />
+
+      {/* Dark grid */}
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          hidden
+          opacity-70
+          dark:block
+        "
+        style={{
+          backgroundImage: `
+            linear-gradient(
+              rgba(255,255,255,0.018) 1px,
+              transparent 1px
+            ),
+            linear-gradient(
+              90deg,
+              rgba(255,255,255,0.018) 1px,
+              transparent 1px
+            )
           `,
           backgroundSize: "72px 72px",
         }}
@@ -93,11 +139,13 @@ function Skills() {
 
       {/* Vertical architectural lines */}
 
-      <div className="pointer-events-none absolute left-[7%] top-0 h-full w-px bg-white/[0.025]" />
+      <div className="pointer-events-none absolute left-[7%] top-0 h-full w-px bg-zinc-900/[0.035] dark:bg-white/[0.025]" />
 
-      <div className="pointer-events-none absolute right-[7%] top-0 h-full w-px bg-white/[0.025]" />
+      <div className="pointer-events-none absolute right-[7%] top-0 h-full w-px bg-zinc-900/[0.035] dark:bg-white/[0.025]" />
 
-      {/* Restrained atmosphere */}
+      {/* =====================================================
+          RESTRAINED ATMOSPHERE
+      ====================================================== */}
 
       <motion.div
         animate={{
@@ -117,8 +165,9 @@ function Skills() {
           h-[420px]
           w-[420px]
           rounded-full
-          bg-[#8C2131]
+          bg-regal-crimson/[0.025]
           blur-[150px]
+          dark:bg-regal-crimson/[0.06]
         "
       />
 
@@ -140,8 +189,9 @@ function Skills() {
           h-[450px]
           w-[450px]
           rounded-full
-          bg-[#C1A673]
+          bg-champagne-gold/[0.025]
           blur-[160px]
+          dark:bg-champagne-gold/[0.035]
         "
       />
 
@@ -174,26 +224,29 @@ function Skills() {
           }}
           className="mb-16"
         >
-
           {/* Eyebrow */}
 
           <div className="mb-6 flex items-center gap-4">
-
-            <span className="h-px w-10 bg-[#8C2131]" />
+            <span className="h-px w-10 bg-regal-crimson" />
 
             <div className="flex items-center gap-2">
-
               <FiCpu
                 size={13}
-                className="text-[#C1A673]"
+                className="text-champagne-gold"
               />
 
-              <span className="text-[9px] font-semibold uppercase tracking-[0.3em] text-[#C1A673]">
+              <span
+                className="
+                  text-[9px]
+                  font-semibold
+                  uppercase
+                  tracking-[0.3em]
+                  text-champagne-gold
+                "
+              >
                 Technical Arsenal
               </span>
-
             </div>
-
           </div>
 
           {/* Heading */}
@@ -206,13 +259,16 @@ function Skills() {
               font-semibold
               leading-[1.05]
               tracking-[-0.045em]
-              text-[#E4E4E7]
+              text-zinc-800
+              transition-colors
+              duration-500
+              dark:text-ash-white
               sm:text-5xl
               md:text-6xl
             "
           >
             Skills I use to{" "}
-            <span className="text-[#8C2131]">
+            <span className="text-regal-crimson">
               bring ideas to life.
             </span>
           </h2>
@@ -220,17 +276,34 @@ function Skills() {
           {/* Description */}
 
           <div className="mt-6 flex max-w-3xl items-start gap-4">
+            <span
+              className="
+                mt-2
+                hidden
+                h-px
+                w-6
+                bg-champagne-gold
+                opacity-50
+                sm:block
+              "
+            />
 
-            <span className="mt-2 hidden h-px w-6 bg-[#C1A673]/50 sm:block" />
-
-            <p className="text-sm leading-7 text-[#71717A] md:text-[15px]">
+            <p
+              className="
+                text-sm
+                leading-7
+                text-zinc-500
+                transition-colors
+                duration-500
+                dark:text-zinc-500
+                md:text-[15px]
+              "
+            >
               A growing technical toolkit spanning full-stack
               development, artificial intelligence, design,
               and modern digital products.
             </p>
-
           </div>
-
         </motion.div>
 
         {/* =================================================
@@ -254,21 +327,30 @@ function Skills() {
               items-center
               justify-center
               border
-              border-white/[0.08]
-              bg-[#242427]
-              text-[#71717A]
+              border-zinc-900/[0.09]
+              bg-white
+              text-zinc-500
               transition-all
               duration-300
               hover:-translate-x-1
-              hover:border-[#C1A673]/40
-              hover:text-[#C1A673]
+              hover:border-champagne-gold
+              hover:text-champagne-gold
+              dark:border-white/[0.08]
+              dark:bg-matte-surface
+              dark:text-zinc-500
+              dark:hover:border-champagne-gold
+              dark:hover:text-champagne-gold
               lg:flex
             "
             aria-label="Previous skills"
           >
             <FiArrowLeft
               size={19}
-              className="transition-transform duration-300 group-hover:-translate-x-1"
+              className="
+                transition-transform
+                duration-300
+                group-hover:-translate-x-1
+              "
             />
           </button>
 
@@ -276,8 +358,14 @@ function Skills() {
               CARDS
           ================================================== */}
 
-          <div className="relative min-h-[430px] flex-1 overflow-hidden">
-
+          <div
+            className="
+              relative
+              min-h-[430px]
+              flex-1
+              overflow-hidden
+            "
+          >
             <AnimatePresence
               mode="wait"
               initial={false}
@@ -300,7 +388,12 @@ function Skills() {
                   duration: 0.45,
                   ease: "easeOut",
                 }}
-                className="grid gap-6 md:grid-cols-2 xl:grid-cols-3"
+                className="
+                  grid
+                  gap-6
+                  md:grid-cols-2
+                  xl:grid-cols-3
+                "
               >
                 {visibleSkills.map(
                   (skill, index) => (
@@ -313,7 +406,6 @@ function Skills() {
                 )}
               </motion.div>
             </AnimatePresence>
-
           </div>
 
           {/* =================================================
@@ -331,24 +423,32 @@ function Skills() {
               items-center
               justify-center
               border
-              border-white/[0.08]
-              bg-[#242427]
-              text-[#71717A]
+              border-zinc-900/[0.09]
+              bg-white
+              text-zinc-500
               transition-all
               duration-300
               hover:translate-x-1
-              hover:border-[#8C2131]/50
-              hover:text-[#8C2131]
+              hover:border-regal-crimson
+              hover:text-regal-crimson
+              dark:border-white/[0.08]
+              dark:bg-matte-surface
+              dark:text-zinc-500
+              dark:hover:border-regal-crimson
+              dark:hover:text-regal-crimson
               lg:flex
             "
             aria-label="Next skills"
           >
             <FiArrowRight
               size={19}
-              className="transition-transform duration-300 group-hover:translate-x-1"
+              className="
+                transition-transform
+                duration-300
+                group-hover:translate-x-1
+              "
             />
           </button>
-
         </div>
 
         {/* =================================================
@@ -356,13 +456,20 @@ function Skills() {
         ================================================== */}
 
         <div className="mt-8 flex items-center justify-between lg:hidden">
-
-          <span className="text-[9px] font-semibold uppercase tracking-[0.25em] text-[#52525B]">
-            Swipe / Navigate
+          <span
+            className="
+              text-[9px]
+              font-semibold
+              uppercase
+              tracking-[0.25em]
+              text-zinc-400
+              dark:text-zinc-600
+            "
+          >
+            Navigate
           </span>
 
           <div className="flex items-center gap-2">
-
             <button
               onClick={previousSkills}
               className="
@@ -372,12 +479,14 @@ function Skills() {
                 items-center
                 justify-center
                 border
-                border-white/[0.08]
-                bg-[#242427]
-                text-[#C1A673]
+                border-zinc-900/[0.09]
+                bg-white
+                text-champagne-gold
                 transition-all
                 duration-300
                 active:scale-95
+                dark:border-white/[0.08]
+                dark:bg-matte-surface
               "
               aria-label="Previous skills"
             >
@@ -393,18 +502,19 @@ function Skills() {
                 items-center
                 justify-center
                 border
-                border-white/[0.08]
-                bg-[#242427]
-                text-[#8C2131]
+                border-zinc-900/[0.09]
+                bg-white
+                text-regal-crimson
                 transition-all
                 duration-300
                 active:scale-95
+                dark:border-white/[0.08]
+                dark:bg-matte-surface
               "
               aria-label="Next skills"
             >
               <FiArrowRight size={17} />
             </button>
-
           </div>
         </div>
 
@@ -413,17 +523,28 @@ function Skills() {
         ================================================== */}
 
         <div className="mt-10 flex items-center justify-center gap-4">
-
-          <span className="font-mono text-[10px] text-[#8C2131]">
+          <span
+            className="
+              font-mono
+              text-[10px]
+              text-regal-crimson
+            "
+          >
             {String(currentPage + 1).padStart(2, "0")}
           </span>
 
-          <span className="h-px w-8 bg-white/[0.07]" />
+          <span className="h-px w-8 bg-zinc-900/[0.08] dark:bg-white/[0.07]" />
 
-          <span className="font-mono text-[10px] text-[#52525B]">
+          <span
+            className="
+              font-mono
+              text-[10px]
+              text-zinc-400
+              dark:text-zinc-600
+            "
+          >
             {String(totalPages).padStart(2, "0")}
           </span>
-
         </div>
 
         {/* =================================================
@@ -431,7 +552,6 @@ function Skills() {
         ================================================== */}
 
         <div className="mt-5 flex justify-center gap-2">
-
           {Array.from({
             length: totalPages,
           }).map((_, index) => (
@@ -452,15 +572,19 @@ function Skills() {
                 duration-500
                 ${
                   index === currentPage
-                    ? "w-10 bg-[#8C2131]"
-                    : "w-3 bg-white/[0.10] hover:bg-white/[0.22]"
+                    ? "w-10 bg-regal-crimson"
+                    : "w-3 bg-zinc-300 hover:bg-zinc-400 dark:bg-zinc-700 dark:hover:bg-zinc-500"
                 }
               `}
             >
               {index === currentPage && (
                 <motion.span
                   layoutId="activeSkillIndicator"
-                  className="absolute inset-0 bg-[#C1A673]"
+                  className="
+                    absolute
+                    inset-0
+                    bg-champagne-gold
+                  "
                   transition={{
                     duration: 0.35,
                   }}
@@ -468,25 +592,52 @@ function Skills() {
               )}
             </button>
           ))}
-
         </div>
 
         {/* =================================================
             BOTTOM META
         ================================================== */}
 
-        <div className="mt-14 flex flex-col gap-3 border-t border-white/[0.06] pt-5 sm:flex-row sm:items-center sm:justify-between">
-
-          <span className="text-[9px] uppercase tracking-[0.22em] text-[#3F3F46]">
+        <div
+          className="
+            mt-14
+            flex
+            flex-col
+            gap-3
+            border-t
+            border-zinc-900/[0.08]
+            pt-5
+            transition-colors
+            duration-500
+            dark:border-white/[0.07]
+            sm:flex-row
+            sm:items-center
+            sm:justify-between
+          "
+        >
+          <span
+            className="
+              text-[9px]
+              uppercase
+              tracking-[0.22em]
+              text-zinc-400
+              dark:text-zinc-600
+            "
+          >
             Continuous learning
           </span>
 
-          <span className="font-mono text-[9px] text-[#3F3F46]">
+          <span
+            className="
+              font-mono
+              text-[9px]
+              text-zinc-400
+              dark:text-zinc-600
+            "
+          >
             STACK / DEVELOP / EVOLVE
           </span>
-
         </div>
-
       </div>
     </section>
   );

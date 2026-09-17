@@ -5,9 +5,11 @@ import {
   FiArrowUpRight,
   FiMenu,
   FiX,
+  FiSun,
+  FiMoon,
 } from "react-icons/fi";
 
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaWhatsapp } from "react-icons/fa";
 
 const navLinks = [
   { name: "Home", href: "#home" },
@@ -20,12 +22,20 @@ const navLinks = [
 
 const GITHUB_URL = "https://github.com/Spandan2023";
 
-const LINKEDIN_URL =
-  "https://www.linkedin.com/in/spandan-guha-thakurta/";
+const WHATSAPP_MESSAGE =
+  "Hi Spandan, I came across your portfolio and would like to connect with you.";
 
-function Navbar() {
+const WHATSAPP_URL = `https://wa.me/918910711972?text=${encodeURIComponent(
+  WHATSAPP_MESSAGE
+)}`;
+
+function Navbar({ theme, setTheme }) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  /* =========================
+     SCROLL DETECTION
+  ========================= */
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,7 +51,10 @@ function Navbar() {
     };
   }, []);
 
-  // Prevent page scrolling while mobile navigation is open
+  /* =========================
+     LOCK BODY ON MOBILE MENU
+  ========================= */
+
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
 
@@ -50,19 +63,44 @@ function Navbar() {
     };
   }, [mobileOpen]);
 
+  /* =========================
+     NAVIGATION
+  ========================= */
+
   const handleNavClick = (href) => {
     setMobileOpen(false);
 
-    document.querySelector(href)?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
+    const target = document.querySelector(href);
+
+    if (target) {
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
   };
+
+  /* =========================
+     EXTERNAL LINKS
+  ========================= */
 
   const openExternal = (url) => {
     setMobileOpen(false);
+
     window.open(url, "_blank", "noopener,noreferrer");
   };
+
+  /* =========================
+     THEME TOGGLE
+  ========================= */
+
+  const toggleTheme = () => {
+    setTheme((currentTheme) =>
+      currentTheme === "light" ? "dark" : "light"
+    );
+  };
+
+  const isDark = theme === "dark";
 
   return (
     <header
@@ -74,22 +112,39 @@ function Navbar() {
         w-full
         transition-all
         duration-500
+
         ${
           scrolled
-            ? "border-b border-white/[0.07] bg-[#18181A]/90 backdrop-blur-xl"
+            ? `
+              border-b
+              border-zinc-900/[0.08]
+              bg-white/90
+              shadow-[0_8px_30px_rgba(0,0,0,0.05)]
+              backdrop-blur-xl
+              dark:border-white/[0.08]
+              dark:bg-matte-charcoal/90
+              dark:shadow-[0_8px_30px_rgba(0,0,0,0.25)]
+            `
             : "bg-transparent"
         }
       `}
     >
-      {/* =====================================================
-          NAVBAR
-      ====================================================== */}
-
-      <nav className="mx-auto flex h-[76px] max-w-7xl items-center justify-between px-6 sm:px-8 lg:px-10">
-
-        {/* =================================================
+      <nav
+        className="
+          mx-auto
+          flex
+          h-[76px]
+          max-w-7xl
+          items-center
+          justify-between
+          px-6
+          sm:px-8
+          lg:px-10
+        "
+      >
+        {/* =========================
             LOGO
-        ================================================== */}
+        ========================= */}
 
         <button
           onClick={() => handleNavClick("#home")}
@@ -97,155 +152,423 @@ function Navbar() {
           aria-label="Go to homepage"
         >
           <div className="flex items-center gap-3">
-
-            <span className="font-space text-[22px] font-semibold tracking-[-0.04em] text-[#E4E4E7] transition-colors duration-300 group-hover:text-white">
+            <span
+              className="
+                font-space
+                text-[22px]
+                font-semibold
+                tracking-[-0.04em]
+                text-zinc-800
+                transition-colors
+                duration-300
+                group-hover:text-regal-crimson
+                dark:text-ash-white
+                dark:group-hover:text-champagne-gold
+              "
+            >
               SPANDAN
-              <span className="text-[#8C2131] transition-colors duration-300 group-hover:text-[#C1A673]">
-                .
-              </span>
+              <span className="text-regal-crimson">.</span>
             </span>
 
-            <span className="hidden h-px w-7 bg-[#C1A673]/45 transition-all duration-500 group-hover:w-11 group-hover:bg-[#8C2131] sm:block" />
+            <span
+              className="
+                hidden
+                h-px
+                w-7
+                bg-regal-crimson
+                opacity-60
+                transition-all
+                duration-500
+                group-hover:w-11
+                group-hover:opacity-100
+                sm:block
+              "
+            />
           </div>
 
-          {/* Small index marker */}
-
-          <span className="absolute -right-3 -top-1 hidden font-mono text-[7px] text-[#52525B] sm:block">
+          <span
+            className="
+              absolute
+              -right-3
+              -top-1
+              hidden
+              font-mono
+              text-[7px]
+              text-zinc-400
+              dark:text-zinc-600
+              sm:block
+            "
+          >
             01
           </span>
         </button>
 
-        {/* =================================================
+        {/* =========================
             DESKTOP NAVIGATION
-        ================================================== */}
+        ========================= */}
 
         <div className="hidden items-center gap-8 lg:flex">
           {navLinks.map((link, index) => (
             <button
               key={link.name}
               onClick={() => handleNavClick(link.href)}
-              className="group relative flex items-center gap-2 text-sm text-[#71717A] transition-colors duration-300 hover:text-[#E4E4E7]"
+              className="
+                group
+                relative
+                flex
+                items-center
+                gap-2
+                text-sm
+                text-zinc-500
+                transition-colors
+                duration-300
+                hover:text-zinc-800
+                dark:text-zinc-500
+                dark:hover:text-ash-white
+              "
             >
-              <span className="font-mono text-[8px] text-[#3F3F46] transition-colors duration-300 group-hover:text-[#8C2131]">
+              <span
+                className="
+                  font-mono
+                  text-[8px]
+                  text-zinc-400
+                  transition-colors
+                  duration-300
+                  group-hover:text-regal-crimson
+                  dark:text-zinc-600
+                "
+              >
                 0{index + 1}
               </span>
 
               <span className="relative">
                 {link.name}
 
-                <span className="absolute -bottom-2 left-0 h-px w-0 bg-[#C1A673] transition-all duration-300 group-hover:w-full" />
+                <span
+                  className="
+                    absolute
+                    -bottom-2
+                    left-0
+                    h-px
+                    w-0
+                    bg-champagne-gold
+                    transition-all
+                    duration-300
+                    group-hover:w-full
+                  "
+                />
               </span>
             </button>
           ))}
         </div>
 
-        {/* =================================================
+        {/* =========================
             DESKTOP ACTIONS
-        ================================================== */}
+        ========================= */}
 
-        <div className="hidden items-center gap-3 lg:flex">
+        <div className="hidden items-center gap-2.5 lg:flex">
 
-          {/* GitHub */}
+          {/* THEME TOGGLE */}
 
           <button
+            type="button"
+            onClick={toggleTheme}
+            className="
+              group
+              flex
+              h-10
+              w-10
+              items-center
+              justify-center
+              border
+              border-zinc-900/[0.10]
+              bg-white
+              text-zinc-600
+              transition-all
+              duration-300
+              hover:-translate-y-0.5
+              hover:border-champagne-gold
+              hover:text-regal-crimson
+              dark:border-white/[0.08]
+              dark:bg-matte-surface
+              dark:text-zinc-400
+              dark:hover:border-champagne-gold
+              dark:hover:text-champagne-gold
+            "
+            aria-label={
+              isDark
+                ? "Switch to light mode"
+                : "Switch to dark mode"
+            }
+            title={
+              isDark
+                ? "Switch to light mode"
+                : "Switch to dark mode"
+            }
+          >
+            <AnimatePresence mode="wait" initial={false}>
+              {isDark ? (
+                <motion.span
+                  key="sun"
+                  initial={{
+                    opacity: 0,
+                    rotate: -45,
+                    scale: 0.7,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    rotate: 0,
+                    scale: 1,
+                  }}
+                  exit={{
+                    opacity: 0,
+                    rotate: 45,
+                    scale: 0.7,
+                  }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <FiSun size={16} />
+                </motion.span>
+              ) : (
+                <motion.span
+                  key="moon"
+                  initial={{
+                    opacity: 0,
+                    rotate: 45,
+                    scale: 0.7,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    rotate: 0,
+                    scale: 1,
+                  }}
+                  exit={{
+                    opacity: 0,
+                    rotate: -45,
+                    scale: 0.7,
+                  }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <FiMoon size={16} />
+                </motion.span>
+              )}
+            </AnimatePresence>
+          </button>
+
+          {/* GITHUB */}
+
+          <button
+            type="button"
             onClick={() => openExternal(GITHUB_URL)}
             className="
               group
               flex
               items-center
-              gap-2.5
+              gap-2
               border
-              border-white/[0.08]
-              bg-[#242427]
+              border-zinc-900/[0.10]
+              bg-white
               px-4
               py-2.5
               text-xs
               font-medium
-              text-[#A1A1AA]
+              text-zinc-500
               transition-all
               duration-300
               hover:-translate-y-0.5
-              hover:border-[#C1A673]/35
-              hover:text-[#E4E4E7]
+              hover:border-regal-crimson
+              hover:text-zinc-800
+              dark:border-white/[0.08]
+              dark:bg-matte-surface
+              dark:text-zinc-400
+              dark:hover:border-regal-crimson
+              dark:hover:text-ash-white
             "
             aria-label="Open GitHub profile"
           >
             <FaGithub
-              size={15}
-              className="transition-transform duration-300 group-hover:scale-110"
+              size={14}
+              className="
+                transition-transform
+                duration-300
+                group-hover:scale-110
+              "
             />
 
             <span>GitHub</span>
           </button>
 
-          {/* LinkedIn / Connect */}
+          {/* WHATSAPP */}
 
           <button
-            onClick={() => openExternal(LINKEDIN_URL)}
+            type="button"
+            onClick={() => openExternal(WHATSAPP_URL)}
             className="
               group
               flex
               items-center
-              gap-3
-              bg-[#8C2131]
+              gap-2.5
+              bg-regal-crimson
               px-5
               py-2.5
               text-xs
               font-semibold
-              text-[#F4F4F5]
+              text-white
+              shadow-[0_8px_24px_rgba(140,33,49,0.18)]
               transition-all
               duration-300
               hover:-translate-y-0.5
-              hover:bg-[#9A2637]
-              hover:shadow-[0_10px_28px_rgba(140,33,49,0.18)]
+              hover:bg-[#741b29]
+              hover:shadow-[0_12px_30px_rgba(140,33,49,0.24)]
             "
-            aria-label="Connect on LinkedIn"
+            aria-label="Connect on WhatsApp"
           >
+            <FaWhatsapp size={15} />
+
             <span>Let's Connect</span>
 
             <FiArrowUpRight
               size={15}
-              className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+              className="
+                transition-transform
+                duration-300
+                group-hover:-translate-y-0.5
+                group-hover:translate-x-0.5
+              "
             />
           </button>
         </div>
 
-        {/* =================================================
-            MOBILE MENU BUTTON
-        ================================================== */}
+        {/* =========================
+            MOBILE ACTIONS
+        ========================= */}
 
-        <button
-          onClick={() => setMobileOpen((prev) => !prev)}
-          className="
-            flex
-            h-10
-            w-10
-            items-center
-            justify-center
-            border
-            border-white/[0.08]
-            bg-[#242427]/80
-            text-[#A1A1AA]
-            transition-all
-            duration-300
-            hover:border-[#C1A673]/35
-            hover:text-[#E4E4E7]
-            lg:hidden
-          "
-          aria-label={mobileOpen ? "Close menu" : "Open menu"}
-          aria-expanded={mobileOpen}
-        >
-          {mobileOpen ? (
-            <FiX size={21} />
-          ) : (
-            <FiMenu size={21} />
-          )}
-        </button>
+        <div className="flex items-center gap-2 lg:hidden">
+
+          {/* MOBILE THEME */}
+
+          <button
+            type="button"
+            onClick={toggleTheme}
+            className="
+              flex
+              h-10
+              w-10
+              items-center
+              justify-center
+              border
+              border-zinc-900/[0.10]
+              bg-white
+              text-zinc-600
+              transition-all
+              duration-300
+              hover:border-champagne-gold
+              hover:text-regal-crimson
+              dark:border-white/[0.08]
+              dark:bg-matte-surface
+              dark:text-zinc-400
+              dark:hover:border-champagne-gold
+              dark:hover:text-champagne-gold
+            "
+            aria-label={
+              isDark
+                ? "Switch to light mode"
+                : "Switch to dark mode"
+            }
+          >
+            <AnimatePresence mode="wait" initial={false}>
+              {isDark ? (
+                <motion.span
+                  key="mobile-sun"
+                  initial={{
+                    opacity: 0,
+                    rotate: -45,
+                    scale: 0.7,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    rotate: 0,
+                    scale: 1,
+                  }}
+                  exit={{
+                    opacity: 0,
+                    rotate: 45,
+                    scale: 0.7,
+                  }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <FiSun size={17} />
+                </motion.span>
+              ) : (
+                <motion.span
+                  key="mobile-moon"
+                  initial={{
+                    opacity: 0,
+                    rotate: 45,
+                    scale: 0.7,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    rotate: 0,
+                    scale: 1,
+                  }}
+                  exit={{
+                    opacity: 0,
+                    rotate: -45,
+                    scale: 0.7,
+                  }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <FiMoon size={17} />
+                </motion.span>
+              )}
+            </AnimatePresence>
+          </button>
+
+          {/* MOBILE MENU */}
+
+          <button
+            type="button"
+            onClick={() => setMobileOpen((prev) => !prev)}
+            className="
+              flex
+              h-10
+              w-10
+              items-center
+              justify-center
+              border
+              border-zinc-900/[0.10]
+              bg-white
+              text-zinc-600
+              transition-all
+              duration-300
+              hover:border-regal-crimson
+              hover:text-regal-crimson
+              dark:border-white/[0.08]
+              dark:bg-matte-surface
+              dark:text-zinc-400
+              dark:hover:border-regal-crimson
+              dark:hover:text-regal-crimson
+            "
+            aria-label={
+              mobileOpen
+                ? "Close menu"
+                : "Open menu"
+            }
+            aria-expanded={mobileOpen}
+          >
+            {mobileOpen ? (
+              <FiX size={20} />
+            ) : (
+              <FiMenu size={20} />
+            )}
+          </button>
+        </div>
       </nav>
 
-      {/* =====================================================
+      {/* =========================
           MOBILE MENU
-      ====================================================== */}
+      ========================= */}
 
       <AnimatePresence>
         {mobileOpen && (
@@ -269,27 +592,45 @@ function Navbar() {
             className="
               overflow-hidden
               border-t
-              border-white/[0.07]
-              bg-[#18181A]/[0.98]
+              border-zinc-900/[0.08]
+              bg-white/95
               backdrop-blur-xl
+              dark:border-white/[0.08]
+              dark:bg-matte-charcoal/95
               lg:hidden
             "
           >
             <div className="mx-auto max-w-7xl px-6 py-7 sm:px-8">
 
-              {/* Mobile header */}
+              {/* MOBILE HEADER */}
 
               <div className="mb-7 flex items-center justify-between">
-                <span className="text-[9px] font-semibold uppercase tracking-[0.3em] text-[#52525B]">
+                <span
+                  className="
+                    text-[9px]
+                    font-semibold
+                    uppercase
+                    tracking-[0.3em]
+                    text-zinc-400
+                    dark:text-zinc-600
+                  "
+                >
                   Navigation
                 </span>
 
-                <span className="font-mono text-[9px] text-[#3F3F46]">
+                <span
+                  className="
+                    font-mono
+                    text-[9px]
+                    text-zinc-400
+                    dark:text-zinc-600
+                  "
+                >
                   SP / 2026
                 </span>
               </div>
 
-              {/* Links */}
+              {/* LINKS */}
 
               <div className="flex flex-col">
                 {navLinks.map((link, index) => (
@@ -314,40 +655,71 @@ function Navbar() {
                       items-center
                       justify-between
                       border-b
-                      border-white/[0.05]
+                      border-zinc-900/[0.06]
                       py-4
                       text-left
+                      dark:border-white/[0.06]
                     "
                   >
                     <div className="flex items-center gap-4">
-
-                      <span className="font-mono text-[9px] text-[#3F3F46] transition-colors duration-300 group-hover:text-[#8C2131]">
+                      <span
+                        className="
+                          font-mono
+                          text-[9px]
+                          text-zinc-400
+                          transition-colors
+                          duration-300
+                          group-hover:text-regal-crimson
+                          dark:text-zinc-600
+                        "
+                      >
                         0{index + 1}
                       </span>
 
-                      <span className="text-base font-medium text-[#A1A1AA] transition-colors duration-300 group-hover:text-[#E4E4E7]">
+                      <span
+                        className="
+                          text-base
+                          font-medium
+                          text-zinc-600
+                          transition-colors
+                          duration-300
+                          group-hover:text-zinc-900
+                          dark:text-zinc-400
+                          dark:group-hover:text-ash-white
+                        "
+                      >
                         {link.name}
                       </span>
-
                     </div>
 
                     <FiArrowUpRight
                       size={16}
-                      className="text-[#52525B] transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-[#C1A673]"
+                      className="
+                        text-zinc-400
+                        transition-all
+                        duration-300
+                        group-hover:-translate-y-0.5
+                        group-hover:translate-x-0.5
+                        group-hover:text-regal-crimson
+                        dark:text-zinc-600
+                      "
                     />
                   </motion.button>
                 ))}
               </div>
 
-              {/* Divider */}
+              {/* DIVIDER */}
 
-              <div className="my-7 h-px bg-white/[0.07]" />
+              <div className="my-7 h-px bg-zinc-900/[0.08] dark:bg-white/[0.07]" />
 
-              {/* Mobile Actions */}
+              {/* MOBILE ACTIONS */}
 
               <div className="grid gap-3 sm:grid-cols-2">
 
+                {/* GITHUB */}
+
                 <button
+                  type="button"
                   onClick={() => openExternal(GITHUB_URL)}
                   className="
                     group
@@ -355,22 +727,25 @@ function Navbar() {
                     items-center
                     justify-between
                     border
-                    border-white/[0.08]
-                    bg-[#242427]
+                    border-zinc-900/[0.09]
+                    bg-zinc-50
                     px-5
                     py-4
                     text-sm
                     font-medium
-                    text-[#E4E4E7]
+                    text-zinc-800
                     transition-all
                     duration-300
-                    hover:border-[#C1A673]/35
+                    hover:border-regal-crimson
+                    dark:border-white/[0.08]
+                    dark:bg-matte-surface
+                    dark:text-ash-white
                   "
                 >
                   <span className="flex items-center gap-3">
                     <FaGithub
                       size={17}
-                      className="text-[#A1A1AA]"
+                      className="text-zinc-500 dark:text-zinc-400"
                     />
 
                     GitHub
@@ -378,49 +753,93 @@ function Navbar() {
 
                   <FiArrowUpRight
                     size={17}
-                    className="text-[#52525B] transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                    className="
+                      text-zinc-400
+                      transition-transform
+                      duration-300
+                      group-hover:-translate-y-0.5
+                      group-hover:translate-x-0.5
+                    "
                   />
                 </button>
 
+                {/* WHATSAPP */}
+
                 <button
-                  onClick={() => openExternal(LINKEDIN_URL)}
+                  type="button"
+                  onClick={() => openExternal(WHATSAPP_URL)}
                   className="
                     group
                     flex
                     items-center
                     justify-between
-                    bg-[#8C2131]
+                    bg-regal-crimson
                     px-5
                     py-4
                     text-sm
                     font-semibold
-                    text-[#F4F4F5]
+                    text-white
                     transition-all
                     duration-300
-                    hover:bg-[#9A2637]
+                    hover:bg-[#741b29]
                   "
                 >
-                  <span>
+                  <span className="flex items-center gap-3">
+                    <FaWhatsapp size={17} />
+
                     Let's Connect
                   </span>
 
                   <FiArrowUpRight
                     size={17}
-                    className="transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                    className="
+                      transition-transform
+                      duration-300
+                      group-hover:-translate-y-0.5
+                      group-hover:translate-x-0.5
+                    "
                   />
                 </button>
-
               </div>
 
-              {/* Mobile availability */}
+              {/* AVAILABILITY */}
 
               <div className="mt-6 flex items-center gap-3">
                 <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#8C2131]/40" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-[#8C2131]" />
+                  <span
+                    className="
+                      absolute
+                      inline-flex
+                      h-full
+                      w-full
+                      animate-ping
+                      rounded-full
+                      bg-regal-crimson
+                      opacity-40
+                    "
+                  />
+
+                  <span
+                    className="
+                      relative
+                      inline-flex
+                      h-2
+                      w-2
+                      rounded-full
+                      bg-regal-crimson
+                    "
+                  />
                 </span>
 
-                <span className="text-[9px] uppercase tracking-[0.2em] text-[#52525B]">
+                <span
+                  className="
+                    text-[9px]
+                    uppercase
+                    tracking-[0.2em]
+                    text-zinc-400
+                    dark:text-zinc-600
+                  "
+                >
                   Open to opportunities
                 </span>
               </div>

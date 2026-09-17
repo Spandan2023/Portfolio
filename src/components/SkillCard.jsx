@@ -29,12 +29,15 @@ function SkillCard({ skill, index }) {
         min-h-[430px]
         overflow-hidden
         border
-        border-white/[0.08]
-        bg-[#242427]
+        border-zinc-900/[0.09]
+        bg-white
         p-7
         transition-all
         duration-500
-        hover:border-white/[0.13]
+        hover:border-zinc-900/[0.16]
+        dark:border-white/[0.08]
+        dark:bg-matte-surface
+        dark:hover:border-white/[0.15]
         sm:p-8
       "
     >
@@ -51,7 +54,7 @@ function SkillCard({ skill, index }) {
           top-0
           h-full
           w-[2px]
-          bg-[#8C2131]
+          bg-regal-crimson
           transition-all
           duration-500
           group-hover:w-[3px]
@@ -60,15 +63,58 @@ function SkillCard({ skill, index }) {
 
       {/* Top-right index */}
 
-      <span className="absolute right-6 top-5 font-mono text-[9px] tracking-[0.15em] text-[#3F3F46]">
+      <span
+        className="
+          absolute
+          right-6
+          top-5
+          font-mono
+          text-[9px]
+          tracking-[0.15em]
+          text-zinc-400
+          dark:text-zinc-600
+        "
+      >
         {String(index + 1).padStart(2, "0")}
       </span>
 
       {/* Corner detail */}
 
-      <span className="pointer-events-none absolute right-0 top-0 h-8 w-8 border-r border-t border-[#C1A673]/20 transition-colors duration-500 group-hover:border-[#C1A673]/45" />
+      <span
+        className="
+          pointer-events-none
+          absolute
+          right-0
+          top-0
+          h-8
+          w-8
+          border-r
+          border-t
+          border-champagne-gold
+          opacity-20
+          transition-opacity
+          duration-500
+          group-hover:opacity-45
+        "
+      />
 
-      <span className="pointer-events-none absolute bottom-0 left-0 h-8 w-8 border-b border-l border-[#8C2131]/20 transition-colors duration-500 group-hover:border-[#8C2131]/45" />
+      <span
+        className="
+          pointer-events-none
+          absolute
+          bottom-0
+          left-0
+          h-8
+          w-8
+          border-b
+          border-l
+          border-regal-crimson
+          opacity-20
+          transition-opacity
+          duration-500
+          group-hover:opacity-45
+        "
+      />
 
       {/* =====================================================
           SUBTLE ATMOSPHERE
@@ -83,11 +129,12 @@ function SkillCard({ skill, index }) {
           h-56
           w-56
           rounded-full
-          bg-[#8C2131]/[0.025]
+          bg-regal-crimson/[0.025]
           blur-[90px]
-          transition-all
+          transition-opacity
           duration-700
-          group-hover:bg-[#8C2131]/[0.05]
+          group-hover:opacity-100
+          dark:bg-regal-crimson/[0.06]
         "
       />
 
@@ -100,11 +147,12 @@ function SkillCard({ skill, index }) {
           h-52
           w-52
           rounded-full
-          bg-[#C1A673]/[0.018]
+          bg-champagne-gold/[0.025]
           blur-[90px]
-          transition-all
+          transition-opacity
           duration-700
-          group-hover:bg-[#C1A673]/[0.035]
+          group-hover:opacity-100
+          dark:bg-champagne-gold/[0.035]
         "
       />
 
@@ -134,22 +182,44 @@ function SkillCard({ skill, index }) {
             items-center
             justify-center
             border
-            border-[#C1A673]/25
-            bg-[#1E1E20]
-            text-[#C1A673]
+            border-champagne-gold/25
+            bg-zinc-100
+            text-champagne-gold
             transition-all
             duration-500
-            group-hover:border-[#C1A673]/50
-            group-hover:bg-[#C1A673]/[0.04]
+            group-hover:border-champagne-gold/50
+            group-hover:bg-champagne-gold/[0.06]
+            dark:bg-white/[0.025]
+            dark:group-hover:bg-champagne-gold/[0.05]
           "
         >
           {/* Inner frame */}
 
-          <div className="absolute inset-2 border border-white/[0.04]" />
+          <div
+            className="
+              absolute
+              inset-2
+              border
+              border-zinc-900/[0.07]
+              dark:border-white/[0.06]
+            "
+          />
 
           {/* Corner marker */}
 
-          <span className="absolute -right-[1px] -top-[1px] h-3 w-3 border-r border-t border-[#8C2131]/60" />
+          <span
+            className="
+              absolute
+              -right-[1px]
+              -top-[1px]
+              h-3
+              w-3
+              border-r
+              border-t
+              border-regal-crimson
+              opacity-60
+            "
+          />
 
           {Icon && (
             <Icon
@@ -165,13 +235,19 @@ function SkillCard({ skill, index }) {
         ================================================== */}
 
         <div className="flex items-center gap-3">
+          <span className="h-px w-6 bg-regal-crimson" />
 
-          <span className="h-px w-6 bg-[#8C2131]" />
-
-          <p className="text-[9px] font-semibold uppercase tracking-[0.28em] text-[#C1A673]">
+          <p
+            className="
+              text-[9px]
+              font-semibold
+              uppercase
+              tracking-[0.28em]
+              text-champagne-gold
+            "
+          >
             {skill.category}
           </p>
-
         </div>
 
         {/* =================================================
@@ -185,10 +261,12 @@ function SkillCard({ skill, index }) {
             text-2xl
             font-semibold
             tracking-[-0.03em]
-            text-[#E4E4E7]
+            text-zinc-800
             transition-colors
             duration-300
-            group-hover:text-white
+            group-hover:text-zinc-950
+            dark:text-ash-white
+            dark:group-hover:text-white
           "
         >
           {skill.name}
@@ -198,7 +276,17 @@ function SkillCard({ skill, index }) {
             DESCRIPTION
         ================================================== */}
 
-        <p className="mt-4 text-sm leading-7 text-[#71717A]">
+        <p
+          className="
+            mt-4
+            text-sm
+            leading-7
+            text-zinc-500
+            transition-colors
+            duration-500
+            dark:text-zinc-500
+          "
+        >
           {skill.description}
         </p>
 
@@ -211,32 +299,54 @@ function SkillCard({ skill, index }) {
           {/* Label */}
 
           <div className="mb-3 flex items-end justify-between">
-
-            <span className="text-[10px] font-medium uppercase tracking-[0.18em] text-[#52525B]">
+            <span
+              className="
+                text-[10px]
+                font-medium
+                uppercase
+                tracking-[0.18em]
+                text-zinc-400
+                dark:text-zinc-600
+              "
+            >
               Proficiency
             </span>
 
-            <span className="font-space text-lg font-semibold text-[#C1A673]">
+            <span
+              className="
+                font-space
+                text-lg
+                font-semibold
+                text-champagne-gold
+              "
+            >
               {skill.level}
-              <span className="ml-0.5 text-xs text-[#52525B]">
+
+              <span className="ml-0.5 text-xs text-zinc-400 dark:text-zinc-600">
                 %
               </span>
             </span>
-
           </div>
 
           {/* Progress */}
 
-          <div className="relative h-[3px] w-full bg-white/[0.06]">
-
+          <div
+            className="
+              relative
+              h-[3px]
+              w-full
+              bg-zinc-200
+              dark:bg-white/[0.07]
+            "
+          >
             {/* Tick marks */}
 
             <div className="pointer-events-none absolute inset-0 flex justify-between">
-              <span className="h-full w-px bg-white/[0.06]" />
-              <span className="h-full w-px bg-white/[0.06]" />
-              <span className="h-full w-px bg-white/[0.06]" />
-              <span className="h-full w-px bg-white/[0.06]" />
-              <span className="h-full w-px bg-white/[0.06]" />
+              <span className="h-full w-px bg-zinc-300 dark:bg-white/[0.08]" />
+              <span className="h-full w-px bg-zinc-300 dark:bg-white/[0.08]" />
+              <span className="h-full w-px bg-zinc-300 dark:bg-white/[0.08]" />
+              <span className="h-full w-px bg-zinc-300 dark:bg-white/[0.08]" />
+              <span className="h-full w-px bg-zinc-300 dark:bg-white/[0.08]" />
             </div>
 
             <motion.div
@@ -255,10 +365,9 @@ function SkillCard({ skill, index }) {
                 relative
                 z-10
                 h-full
-                bg-[#8C2131]
+                bg-regal-crimson
               "
             />
-
           </div>
 
           {/* =================================================
@@ -266,17 +375,23 @@ function SkillCard({ skill, index }) {
           ================================================== */}
 
           <div className="mt-7 flex items-center gap-3">
+            <span className="h-px flex-1 bg-zinc-900/[0.08] dark:bg-white/[0.07]" />
 
-            <span className="h-px flex-1 bg-white/[0.06]" />
-
-            <span className="text-[9px] font-semibold uppercase tracking-[0.28em] text-[#52525B]">
+            <span
+              className="
+                text-[9px]
+                font-semibold
+                uppercase
+                tracking-[0.28em]
+                text-zinc-400
+                dark:text-zinc-600
+              "
+            >
               {skill.shortName}
             </span>
 
-            <span className="h-px flex-1 bg-white/[0.06]" />
-
+            <span className="h-px flex-1 bg-zinc-900/[0.08] dark:bg-white/[0.07]" />
           </div>
-
         </div>
       </div>
     </motion.article>

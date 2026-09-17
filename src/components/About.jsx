@@ -45,27 +45,86 @@ function About() {
   return (
     <section
       id="about"
-      className="relative overflow-hidden bg-[#18181A] px-6 py-28 text-[#E4E4E7] sm:py-32 lg:px-10 lg:py-36"
+      className="
+        relative overflow-hidden
+        bg-zinc-50 dark:bg-matte-charcoal
+        px-6 py-28
+        text-zinc-800 dark:text-ash-white
+        transition-colors duration-500
+        sm:py-32 lg:px-10 lg:py-36
+      "
     >
       {/* =====================================================
           BACKGROUND TEXTURE
       ====================================================== */}
 
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.025]"
+        className="
+          pointer-events-none absolute inset-0
+          opacity-[0.035] dark:opacity-[0.025]
+        "
         style={{
           backgroundImage: `
-            linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)
+            linear-gradient(
+              rgba(39,39,42,0.5) 1px,
+              transparent 1px
+            ),
+            linear-gradient(
+              90deg,
+              rgba(39,39,42,0.5) 1px,
+              transparent 1px
+            )
+          `,
+          backgroundSize: "80px 80px",
+        }}
+      />
+
+      {/* Dark-mode architectural grid correction */}
+      <div
+        className="
+          pointer-events-none absolute inset-0
+          hidden dark:block
+          opacity-[0.025]
+        "
+        style={{
+          backgroundImage: `
+            linear-gradient(
+              rgba(255,255,255,0.5) 1px,
+              transparent 1px
+            ),
+            linear-gradient(
+              90deg,
+              rgba(255,255,255,0.5) 1px,
+              transparent 1px
+            )
           `,
           backgroundSize: "80px 80px",
         }}
       />
 
       {/* Subtle atmospheric light */}
-      <div className="pointer-events-none absolute -left-40 top-1/4 h-[500px] w-[500px] rounded-full bg-[#8C2131]/[0.07] blur-[150px]" />
+      <div
+        className="
+          pointer-events-none absolute
+          -left-40 top-1/4
+          h-[500px] w-[500px]
+          rounded-full
+          bg-regal-crimson/[0.045]
+          blur-[150px]
+          dark:bg-regal-crimson/[0.07]
+        "
+      />
 
-      <div className="pointer-events-none absolute -right-40 bottom-0 h-[450px] w-[450px] rounded-full bg-[#C1A673]/[0.035] blur-[150px]" />
+      <div
+        className="
+          pointer-events-none absolute
+          -right-40 bottom-0
+          h-[450px] w-[450px]
+          rounded-full
+          bg-champagne-gold/[0.035]
+          blur-[150px]
+        "
+      />
 
       <div className="relative z-10 mx-auto max-w-7xl">
 
@@ -82,29 +141,40 @@ function About() {
         >
           {/* Eyebrow */}
           <div className="mb-7 flex items-center gap-4">
-            <span className="h-px w-12 bg-[#8C2131]" />
+            <span className="h-px w-12 bg-regal-crimson" />
 
-            <span className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#C1A673]">
+            <span className="flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.28em] text-champagne-gold">
               <Sparkles size={13} strokeWidth={1.5} />
               About Spandan
             </span>
           </div>
 
           {/* Heading */}
-          <h2 className="font-space text-4xl font-semibold leading-[1.08] tracking-[-0.03em] text-[#E4E4E7] sm:text-5xl md:text-6xl lg:text-[4.4rem]">
+          <h2
+            className="
+              font-space
+              text-4xl font-semibold
+              leading-[1.08]
+              tracking-[-0.03em]
+              text-zinc-800
+              transition-colors duration-500
+              dark:text-ash-white
+              sm:text-5xl md:text-6xl lg:text-[4.4rem]
+            "
+          >
             I don't just learn technology.
             <br />
 
-            <span className="text-[#8C2131]">
+            <span className="text-regal-crimson">
               I think about what to build with it.
             </span>
           </h2>
 
           {/* Editorial divider */}
           <div className="mt-10 flex items-center gap-5">
-            <span className="h-px w-20 bg-[#C1A673]/40" />
+            <span className="h-px w-20 bg-champagne-gold/40" />
 
-            <span className="text-[10px] uppercase tracking-[0.3em] text-[#71717A]">
+            <span className="text-[10px] uppercase tracking-[0.3em] text-zinc-500 dark:text-zinc-500">
               Technology · Intelligence · Strategy
             </span>
           </div>
@@ -131,22 +201,31 @@ function About() {
           >
             {/* Intro label */}
             <div className="mb-8 flex items-center gap-3">
-              <span className="font-mono text-xs text-[#8C2131]">
+              <span className="font-mono text-xs text-regal-crimson">
                 01
               </span>
 
-              <span className="h-px w-8 bg-[#8C2131]/50" />
+              <span className="h-px w-8 bg-regal-crimson/50" />
 
-              <span className="text-[11px] font-medium uppercase tracking-[0.25em] text-[#71717A]">
+              <span className="text-[11px] font-medium uppercase tracking-[0.25em] text-zinc-500 dark:text-zinc-500">
                 The person behind the code
               </span>
             </div>
 
-            <div className="space-y-7 text-[16px] leading-8 text-[#A1A1AA] md:text-[17px]">
-
+            <div
+              className="
+                space-y-7
+                text-[16px]
+                leading-8
+                text-zinc-600
+                transition-colors duration-500
+                dark:text-ash-muted
+                md:text-[17px]
+              "
+            >
               <p>
                 I'm{" "}
-                <span className="font-medium text-[#E4E4E7]">
+                <span className="font-medium text-zinc-800 dark:text-ash-white">
                   Spandan
                 </span>
                 , a developer with a strong interest in building digital
@@ -181,19 +260,46 @@ function About() {
               onClick={scrollToProjects}
               whileHover={{
                 y: -3,
-                backgroundColor: "#8C2131",
               }}
               whileTap={{
                 scale: 0.98,
               }}
-              className="group mt-11 flex items-center gap-4 border border-[#8C2131] bg-[#8C2131]/10 px-6 py-4 text-sm font-semibold text-[#E4E4E7] transition-all duration-300 hover:shadow-[0_12px_35px_rgba(140,33,49,0.18)]"
+              className="
+                group mt-11
+                flex items-center gap-4
+                border border-regal-crimson
+                bg-regal-crimson/[0.06]
+                px-6 py-4
+                text-sm font-semibold
+                text-zinc-800
+                transition-all duration-300
+                hover:bg-regal-crimson
+                hover:text-white
+                hover:shadow-[0_12px_35px_rgba(140,33,49,0.18)]
+                dark:bg-regal-crimson/10
+                dark:text-ash-white
+              "
             >
               Explore what I've built
 
-              <span className="flex h-7 w-7 items-center justify-center border border-[#C1A673]/40">
+              <span
+                className="
+                  flex h-7 w-7
+                  items-center justify-center
+                  border border-champagne-gold/40
+                  transition-colors duration-300
+                  group-hover:border-white/30
+                "
+              >
                 <ArrowUpRight
                   size={15}
-                  className="text-[#C1A673] transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+                  className="
+                    text-champagne-gold
+                    transition-transform duration-300
+                    group-hover:-translate-y-0.5
+                    group-hover:translate-x-0.5
+                    group-hover:text-white
+                  "
                 />
               </span>
             </motion.button>
@@ -215,31 +321,83 @@ function About() {
             className="relative"
           >
             {/* Outer architectural frame */}
-            <div className="absolute -inset-3 border border-[#C1A673]/[0.07]" />
+            <div
+              className="
+                absolute -inset-3
+                border border-champagne-gold/[0.10]
+                dark:border-champagne-gold/[0.07]
+              "
+            />
 
-            <div className="relative overflow-hidden border border-white/[0.09] bg-[#242427] shadow-[inset_0_1px_0_rgba(255,255,255,0.035)]">
+            <div
+              className="
+                relative overflow-hidden
+                border border-zinc-900/[0.10]
+                bg-white
+                shadow-[0_20px_60px_rgba(39,39,42,0.07)]
+                transition-colors duration-500
+                dark:border-white/[0.09]
+                dark:bg-matte-surface
+                dark:shadow-[inset_0_1px_0_rgba(255,255,255,0.035)]
+              "
+            >
 
               {/* Top accent */}
-              <div className="h-[2px] w-full bg-gradient-to-r from-[#8C2131] via-[#8C2131] to-[#C1A673]" />
+              <div
+                className="
+                  h-[2px] w-full
+                  bg-gradient-to-r
+                  from-regal-crimson
+                  via-regal-crimson
+                  to-champagne-gold
+                "
+              />
 
               {/* Card header */}
-              <div className="flex items-start justify-between border-b border-white/[0.08] p-7 sm:p-8">
-
+              <div
+                className="
+                  flex items-start justify-between
+                  border-b border-zinc-900/[0.08]
+                  p-7
+                  transition-colors duration-500
+                  dark:border-white/[0.08]
+                  sm:p-8
+                "
+              >
                 <div>
                   <div className="mb-3 flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#8C2131]" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-regal-crimson" />
 
-                    <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-[#71717A]">
+                    <span className="text-[10px] font-semibold uppercase tracking-[0.28em] text-zinc-500">
                       Current direction
                     </span>
                   </div>
 
-                  <h3 className="font-space text-2xl font-semibold tracking-tight text-[#E4E4E7] sm:text-3xl">
+                  <h3
+                    className="
+                      font-space
+                      text-2xl font-semibold
+                      tracking-tight
+                      text-zinc-800
+                      transition-colors duration-500
+                      dark:text-ash-white
+                      sm:text-3xl
+                    "
+                  >
                     Building the next chapter.
                   </h3>
                 </div>
 
-                <div className="hidden h-11 w-11 items-center justify-center border border-[#C1A673]/20 bg-[#C1A673]/[0.05] text-[#C1A673] sm:flex">
+                <div
+                  className="
+                    hidden h-11 w-11
+                    items-center justify-center
+                    border border-champagne-gold/20
+                    bg-champagne-gold/[0.05]
+                    text-champagne-gold
+                    sm:flex
+                  "
+                >
                   <BriefcaseBusiness
                     size={19}
                     strokeWidth={1.4}
@@ -250,7 +408,7 @@ function About() {
               {/* Focus areas */}
               <div className="p-5 sm:p-7">
                 <div className="mb-5 px-2">
-                  <span className="text-[10px] uppercase tracking-[0.25em] text-[#52525B]">
+                  <span className="text-[10px] uppercase tracking-[0.25em] text-zinc-400 dark:text-zinc-600">
                     Areas of focus
                   </span>
                 </div>
@@ -281,14 +439,25 @@ function About() {
                         whileHover={{
                           x: 5,
                         }}
-                        className="group relative overflow-hidden border border-white/[0.07] bg-[#1E1E20] p-5 transition-all duration-300 hover:border-white/[0.14]"
+                        className="
+                          group relative
+                          overflow-hidden
+                          border border-zinc-900/[0.08]
+                          bg-zinc-50
+                          p-5
+                          transition-all duration-300
+                          hover:border-zinc-900/[0.15]
+                          dark:border-white/[0.07]
+                          dark:bg-matte-surface
+                          dark:hover:border-white/[0.14]
+                        "
                       >
                         {/* Hover accent */}
                         <div
                           className={`absolute left-0 top-0 h-full w-[2px] origin-top scale-y-0 transition-transform duration-300 group-hover:scale-y-100 ${
                             isGold
-                              ? "bg-[#C1A673]"
-                              : "bg-[#8C2131]"
+                              ? "bg-champagne-gold"
+                              : "bg-regal-crimson"
                           }`}
                         />
 
@@ -299,22 +468,22 @@ function About() {
                             <span
                               className={`font-mono text-[10px] ${
                                 isGold
-                                  ? "text-[#C1A673]"
-                                  : "text-[#8C2131]"
+                                  ? "text-champagne-gold"
+                                  : "text-regal-crimson"
                               }`}
                             >
                               {area.number}
                             </span>
 
-                            <span className="mt-3 h-full w-px bg-white/[0.07]" />
+                            <span className="mt-3 h-full w-px bg-zinc-900/[0.08] dark:bg-white/[0.07]" />
                           </div>
 
                           {/* Icon */}
                           <div
                             className={`flex h-11 w-11 shrink-0 items-center justify-center border ${
                               isGold
-                                ? "border-[#C1A673]/20 bg-[#C1A673]/[0.05] text-[#C1A673]"
-                                : "border-[#8C2131]/25 bg-[#8C2131]/[0.07] text-[#B84959]"
+                                ? "border-champagne-gold/20 bg-champagne-gold/[0.05] text-champagne-gold"
+                                : "border-regal-crimson/25 bg-regal-crimson/[0.07] text-regal-crimson dark:text-[#B84959]"
                             }`}
                           >
                             <Icon
@@ -325,11 +494,27 @@ function About() {
 
                           {/* Content */}
                           <div className="min-w-0">
-                            <h4 className="font-space text-lg font-semibold text-[#E4E4E7]">
+                            <h4
+                              className="
+                                font-space
+                                text-lg font-semibold
+                                text-zinc-800
+                                transition-colors duration-500
+                                dark:text-ash-white
+                              "
+                            >
                               {area.title}
                             </h4>
 
-                            <p className="mt-1.5 text-sm leading-6 text-[#71717A]">
+                            <p
+                              className="
+                                mt-1.5
+                                text-sm leading-6
+                                text-zinc-500
+                                transition-colors duration-500
+                                dark:text-zinc-500
+                              "
+                            >
                               {area.description}
                             </p>
                           </div>
@@ -341,21 +526,29 @@ function About() {
               </div>
 
               {/* Bottom philosophy */}
-              <div className="border-t border-white/[0.08] px-7 py-6 sm:px-8">
+              <div
+                className="
+                  border-t border-zinc-900/[0.08]
+                  px-7 py-6
+                  transition-colors duration-500
+                  dark:border-white/[0.08]
+                  sm:px-8
+                "
+              >
                 <div className="flex flex-wrap items-center gap-x-3 gap-y-2">
-                  <span className="text-xs uppercase tracking-[0.2em] text-[#71717A]">
+                  <span className="text-xs uppercase tracking-[0.2em] text-zinc-500">
                     Philosophy
                   </span>
 
-                  <span className="h-1 w-1 rounded-full bg-[#8C2131]" />
+                  <span className="h-1 w-1 rounded-full bg-regal-crimson" />
 
-                  <span className="font-space text-sm text-[#A1A1AA]">
+                  <span className="font-space text-sm text-zinc-600 dark:text-ash-muted">
                     Build with purpose.
                   </span>
 
-                  <span className="h-1 w-1 rounded-full bg-[#C1A673]" />
+                  <span className="h-1 w-1 rounded-full bg-champagne-gold" />
 
-                  <span className="font-space text-sm text-[#A1A1AA]">
+                  <span className="font-space text-sm text-zinc-600 dark:text-ash-muted">
                     Learn continuously.
                   </span>
                 </div>
@@ -373,18 +566,24 @@ function About() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="mt-24 border-t border-white/[0.08] pt-7"
+          className="
+            mt-24
+            border-t border-zinc-900/[0.08]
+            pt-7
+            transition-colors duration-500
+            dark:border-white/[0.08]
+          "
         >
           <div className="flex flex-col justify-between gap-4 text-xs sm:flex-row sm:items-center">
-            <span className="uppercase tracking-[0.25em] text-[#52525B]">
+            <span className="uppercase tracking-[0.25em] text-zinc-400 dark:text-zinc-600">
               Spandan Guha Thakurta
             </span>
 
-            <span className="font-space text-[#71717A]">
+            <span className="font-space text-zinc-500 dark:text-zinc-500">
               Technology{" "}
-              <span className="mx-2 text-[#8C2131]">×</span>
+              <span className="mx-2 text-regal-crimson">×</span>
               Intelligence{" "}
-              <span className="mx-2 text-[#C1A673]">×</span>
+              <span className="mx-2 text-champagne-gold">×</span>
               Strategy
             </span>
           </div>
